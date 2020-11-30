@@ -6,3 +6,12 @@ import cloudinary
 from cloudinary.models import CloudinaryField
 
 # Create your models here.
+
+class Profile(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default = None, related_name='profile')
+    profile_pic = CloudinaryField(blank=True, null=True)
+    bio = models.TextField(blank =True, null=True)
+    phone_number = models.CharField(max_length=10, blank=True, null=True)
+    
+    def __str__(self):
+        return self.user.username
