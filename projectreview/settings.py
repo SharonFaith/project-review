@@ -78,7 +78,7 @@ MIDDLEWARE = [
 ]
 
 
-ROOT_URLCONF = 'tribune.urls'
+ROOT_URLCONF = 'projectreview.urls'
 
 TEMPLATES = [
     {
