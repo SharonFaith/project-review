@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 from django.http import JsonResponse
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializer import MerchSerializer, ProjectSerializer, ProfileSerializer, CloudinaryTestSerializer
+#from .serializer import MerchSerializer, ProjectSerializer, ProfileSerializer, CloudinaryTestSerializer
 from rest_framework import status
 from .permissions import IsAdminOrReadOnly
 #from .request import get_movies, get_merch, post_merch, get_a_merch, update_a_merch

@@ -97,7 +97,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'tribune.wsgi.application'
+WSGI_APPLICATION = 'projectreview.wsgi.application'
 
 
 # Database
