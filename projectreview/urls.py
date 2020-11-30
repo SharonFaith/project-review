@@ -18,6 +18,8 @@ from django.urls import path
 from django.conf.urls import include
 
 urlpatterns = [
+    path('', include('instaapp.urls')),
+    path('landing-page/', include('instaapp.urls')),
     path('accounts/', include('django_registration.backends.one_step.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
