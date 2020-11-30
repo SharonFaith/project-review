@@ -15,3 +15,12 @@ class Profile(models.Model):
     
     def __str__(self):
         return self.user.username
+
+
+class Projects(models.Model):
+    profile= models.ForeignKey(Profile, on_delete=models.CASCADE, default = None, related_name='projects')
+    title = models.CharField(max_length = 30)
+    landing_page = CloudinaryField()
+    description = models.TextField()
+    live_site = models.URLField()
+    
