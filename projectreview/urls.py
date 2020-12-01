@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from reviewapp.views import logout_view
+from rest_framework.authtoken.views import obtain_auth_token
+
 
 urlpatterns = [
     path('', include('reviewapp.urls')),
@@ -25,4 +27,5 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('logout/', logout_view),
+    path('api-token-auth/', obtain_auth_token),
 ]
