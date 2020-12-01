@@ -3,6 +3,7 @@ from .models import DisplayProfile, DisplayProjects
 from decouple import config
 import urllib.parse
 from django.contrib.auth.models import User
+from rest_framework.authtoken.models import Token
 
 
 
@@ -128,9 +129,17 @@ def get_a_profile(id):
     return profile_object
 
 
+
 def update_a_profile(id, profile_pic, bio, phone_number):
     profile_url = 'https://app-m-tribune.herokuapp.com/api/profiles/profile-id/{}/'.format(id)
-    authorize = config('AUTHORIZATION_TOKEN')
+    users = User.objects.all()
+    the_user = None
+    for a_user in users:
+        if a_user.profile.first().id == id:
+            a_user = the_user
+    token = Token.objects.filter(user = the_user)
+    
+    authorize = token
     print(authorize)
     values = {
         #'user': name,
