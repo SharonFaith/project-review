@@ -5,7 +5,25 @@
 {{block.super}}
 <div class="container-fluid">
     <div class="container">
-
+        <div class="row">
+            {% if searched_projects%}
+              <h2>Found {{ searched_projects |length }} projects with search term {{message}} in their titles:</h2>
+            {% else %}
+              <h2> Found 0 projects with a title with {{message}}</h2>
+            {% endif %}
+        
+          </div>
+        
+          <div class="row">
+        
+          {% if searched_projects %}
+            {% for proj in searched_projects %}
+              <div class="col-md-12">
+                  <h1><a href=" "><li>{{proj.title}}</li></a></h1>
+              </div>
+            {% endfor %}
+          {% endif %}
+          </div>
     </div>
 </div>
 

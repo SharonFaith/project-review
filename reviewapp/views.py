@@ -13,7 +13,7 @@ from rest_framework.views import APIView
 from .serializer import ProjectSerializer, ProfileSerializer
 from rest_framework import status
 from .permissions import IsAdminOrReadOnly
-#from .request import get_movies, get_merch, post_merch, get_a_merch, update_a_merch
+from .request import get_profiles, get_projects, get_a_profile, get_a_project, update_a_profile
 from decouple import config
 
 # Create your views here.
@@ -32,7 +32,25 @@ def welcome(request):
 
 def index(request):
 
-   return render(request, 'index.html')
+   projects = get_projects()
+
+   return render(request, 'index.html', {'projects':projects})
+
+def search_results(request):
+   if 'title' in request.GET and request.GET['title']:
+      search_term = request.GET.get('title')
+      searched_projects = Projects.objects.filter(title__icontains= search_term)
+     
+      message = f'{search_term}'
+
+      return render(request, 'search.html', {'message':message, 'searched_projects':searched_projects})
+
+   else:
+      message = 'You have not searched for any term'
+
+      return render(request, 'search.html', {'message':message})
+
+
    
 
 class ProfileList(APIView):
