@@ -171,4 +171,3 @@ def get_a_project(id):
     #print(project_object)
     return project_object
 
-
