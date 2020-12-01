@@ -50,7 +50,13 @@ def search_results(request):
 
       return render(request, 'search.html', {'message':message})
 
+def single_project(request, project_id):
+    
+    project = get_a_project(project_id)
 
+    return render(request, 'singleproject.html', {'project':project})
+
+    
    
 
 class ProfileList(APIView):

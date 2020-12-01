@@ -5,7 +5,39 @@
 {{block.super}}
 <div class="container-fluid">
     <div class="container">
-
+        <div class="row">
+            <div class="col-md-6 text-center" >
+                <div class = "card" style="background-color: whitesmoke; border: whitesmoke; padding: 15px; margin: 10px;">
+                    <div class = "card-header text-center" style="background-color: whitesmoke;">
+                        <img class="img-rounded"  src="{{project.landing_page}}" style="max-width: 2em; margin-right: 10px;">
+                        <a href="">{{project.title}}</a>
+                    </div>
+                    <div class = "card-body">
+                        <a href=""><img src="{{project.landing_page}}" class="img-responsive" alt="Image" style="padding: 5px; width: 100%; height: 100%;"></a>
+                        <p>{{project.description}}</p>
+                    </div>
+                    <div class="card-footer">
+                       
+                        <a href=""><p>View more</p></a>
+                        <p><strong>Live site: </strong> {{project.live_site}}</p>
+                        
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-md-6 text-center" >
+                <h1>Ratings</h1>
+                <br>
+                <h3>Some ratings: </h3>
+                <br>
+               
+            </div>
+        </div>
+        <hr>
+        
+       
+        
+        
     </div>
 </div>
 

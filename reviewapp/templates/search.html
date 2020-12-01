@@ -19,7 +19,7 @@
           {% if searched_projects %}
             {% for proj in searched_projects %}
               <div class="col-md-12">
-                  <h1><a href=" "><li>{{proj.title}}</li></a></h1>
+                  <h1><a href="{% url 'single-project' proj.id %} "><li>{{proj.title}}</li></a></h1>
               </div>
             {% endfor %}
           {% endif %}

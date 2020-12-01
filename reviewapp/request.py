@@ -98,7 +98,7 @@ def get_projects():
 def get_a_profile(id):
     
     profile_url = 'https://app-m-tribune.herokuapp.com/api/profiles/profile-id/{}/'.format(id)
-
+    image_url = 'https://res.cloudinary.com/{}/'.format(cloud_name)
     with urllib.request.urlopen(profile_url) as url:
 
         get_profile_data = url.read()                     
@@ -112,8 +112,8 @@ def get_a_profile(id):
             bio= get_profile_response.get('bio')
             phone_number = get_profile_response.get('phone_number')
             projects = get_profile_response.get('projects')
-
-            profile_object = DisplayProfile(id, user, profile_pic, bio, phone_number, projects)
+            pic_url = image_url + profile_pic
+            profile_object = DisplayProfile(id, user, pic_url, bio, phone_number, projects)
     
     #print(profile_object)
     return profile_object
@@ -151,7 +151,7 @@ def update_a_profile(id, profile_pic, bio, phone_number):
 def get_a_project(id):
     
     project_url = 'https://app-m-tribune.herokuapp.com/api/projects/project-id/{}/'.format(id)
-
+    image_url = 'https://res.cloudinary.com/{}/'.format(cloud_name)
     with urllib.request.urlopen(project_url) as url:
 
         get_project_data = url.read()                     
@@ -165,8 +165,8 @@ def get_a_project(id):
             landing_page = get_project_response.get('landing_page')
             description = get_project_response.get('description')
             live_site = get_project_response.get('live_site')
-
-            project_object = DisplayProjects(id, profile, title, landing_page, description, live_site)
+            pic_url = image_url + landing_page
+            project_object = DisplayProjects(id, profile, title, pic_url, description, live_site)
     
     #print(project_object)
     return project_object
