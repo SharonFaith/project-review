@@ -23,4 +23,23 @@ class Projects(models.Model):
     landing_page = CloudinaryField()
     description = models.TextField()
     live_site = models.URLField()
-    
+
+
+class DisplayProfile:
+    def __init__(self, id, user, profile_pic, bio, phone_number, projects):
+        self.id = id
+        self.user = user
+        self.profile_pic = profile_pic
+        self.bio = bio
+        self.phone_number = phone_number
+        self.projects = projects
+
+class DisplayProjects:
+    def __init__(self, id, profile, title, landing_page, description, live_site):
+        self.id = id
+        self.profile = profile
+        self.title = title
+        self.landing_page = landing_page
+        self.description = description
+        self.live_site = live_site
+
