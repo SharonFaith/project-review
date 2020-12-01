@@ -19,7 +19,10 @@ def process_profile(profile_list):
         phone_number = profile.get('phone_number')
         projects = profile.get('projects')
 
-        pic_url = image_url + profile_pic
+        if profile_pic is not None:
+                pic_url = image_url + profile_pic
+        else:
+                pic_url = profile_pic
 
       
         profile_object = DisplayProfile(id, user, pic_url, bio, phone_number, projects)
@@ -39,7 +42,10 @@ def process_projects(project_list):
         description = project.get('description')
         live_site = project.get('live_site')
         print(landing_page)
-        pic_url = image_url + landing_page
+        if landing_page is not None:
+                pic_url = image_url + landing_page
+        else:
+                pic_url = landing_page
         print(pic_url)
         project_object = DisplayProjects(id, profile, title, pic_url, description, live_site)
 
@@ -112,7 +118,10 @@ def get_a_profile(id):
             bio= get_profile_response.get('bio')
             phone_number = get_profile_response.get('phone_number')
             projects = get_profile_response.get('projects')
-            pic_url = image_url + profile_pic
+            if profile_pic is not None:
+                pic_url = image_url + profile_pic
+            else:
+                pic_url = profile_pic
             profile_object = DisplayProfile(id, user, pic_url, bio, phone_number, projects)
     
     #print(profile_object)
@@ -165,7 +174,10 @@ def get_a_project(id):
             landing_page = get_project_response.get('landing_page')
             description = get_project_response.get('description')
             live_site = get_project_response.get('live_site')
-            pic_url = image_url + landing_page
+            if landing_page is not None:
+                pic_url = image_url + landing_page
+            else:
+                pic_url = landing_page
             project_object = DisplayProjects(id, profile, title, pic_url, description, live_site)
     
     #print(project_object)

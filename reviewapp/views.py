@@ -56,7 +56,63 @@ def single_project(request, project_id):
 
     return render(request, 'singleproject.html', {'project':project})
 
-    
+@login_required(login_url='/accounts/login')
+def rate_project(request, proj_id):
+
+    return render(request, 'rateform.html')
+
+
+@login_required(login_url='/accounts/login')
+def profile(request, id):
+  
+   users = User.objects.all()
+   #followed_users = UserFollowing.objects.all()
+   #user_key = person being followed
+   #following_user_id = user logged in who followed
+   
+      #if followed_user.following_user_id == current_user :
+         
+
+   
+   logged_user = request.user
+   current_user = User.objects.filter(id = id).first()
+   
+   #followers = current_user.followers.all()
+
+   #current_follower = None
+  
+
+   #print(current_user.following_user_id)
+
+   profiles = get_profiles()
+
+   #projects = current_user.projects.all()
+   
+  
+   #profiles = Profile.objects.all()
+ #  print(profiles)
+   current_profile = None
+
+ #  print(current_user.id)
+
+   for user_profile in profiles:
+ #     print(profile.insta_user)
+      if user_profile.user == current_user:
+         current_profile = user_profile
+
+   print(current_profile)
+   if current_profile == None:
+      current_profile = Profile.objects.create(user= current_user)
+
+ 
+   #print(UserFollowing.objects.all())
+
+   projects = current_profile.projects.all()
+   
+   return render(request, 'profile/profile.html', {'user_profile': current_profile, 'projects': projects, 'current_user':current_user,  })
+
+
+
    
 
 class ProfileList(APIView):

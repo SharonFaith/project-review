@@ -5,7 +5,65 @@
 {{block.super}}
 <div class="container-fluid">
     <div class="container">
+        <h1 style="text-align: center; color: black;"><strong>{{current_user.username}}</strong></h1>
+        <hr>
+        <div class="row" style="color: black;">
+            <div class="col-md-4" style="text-align: center;">
+                
+                <hr>
+                {% if user_profile.bio %}
+                    <h4><strong>Bio :</strong></h4>
+                    <p>{{user_profile.bio}}</p>
+                    
+                {% else %}
+                    <p>{{current_user.username}} has no bio</p>
+                    <hr>
+                    
+                {% endif %}
 
+                {% if user_profile.phone_number %}
+                    <h4><strong>Phone number :</strong></h4>
+                    <p>{{user_profile.phone_number}}</p>
+                    
+                {% else %}
+                    <p>{{current_user.username}} has no phone number added</p>
+                    <hr>
+                    
+                {% endif %}
+    
+                
+            
+            </div>
+            <div class="col-md-4" style="padding: 30px; text-align: center;">
+                {% if user_profile.profile_pic %}
+                
+                    <img src="{{user_profile.profile_pic}}" alt="" class="img-thumbnail">
+                
+                {% else %}
+                    <p>No profile picture</p>
+                {% endif %}
+                
+                
+            </div>
+            <div class="col-md-4">
+                <hr>
+                {% if user == current_user %}
+                    <a href=""><h4>Edit profile (add/change profile pic and bio)</h4></a>
+                    <hr>
+                    <a href=""><h4>Upload image (post)</h4></a>
+    
+                
+                {% endif %}
+               
+                <hr>
+                
+                
+                
+                
+            </div>
+              
+        </div>
+        <hr>
     </div>
 </div>
 
