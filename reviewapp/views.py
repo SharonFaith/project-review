@@ -3,7 +3,7 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 import datetime as dt
 from .models import Projects, Profile
 from django.core.exceptions import ObjectDoesNotExist
-#from .forms import NewsLetterForm, NewArticleForm, MerchForm
+from .forms import UpdateProfile
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
@@ -111,7 +111,29 @@ def profile(request, id):
    
    return render(request, 'profile/profile.html', {'user_profile': current_profile, 'projects': projects, 'current_user':current_user,  })
 
+@login_required(login_url='/accounts/login')
+def update_profile(request):
+    current_user = request.user
 
+    id = current_user.profile.first().id
+    print(id)
+
+    if request.method == 'POST':
+        form = UpdateProfile(request.POST, request.FILES)
+        if form.is_valid():
+            updated_profile = form.save(commit=False)
+            profile_pic = updated_profile.profile_pic
+            bio = updated_profile.bio
+            phone_number = updated_profile.phone_number 
+
+            update_a_profile(id, profile_pic, bio, phone_number)
+
+            return redirect(profile, id = id)
+   # else:
+    
+    form = UpdateProfile()
+
+    return render(request, 'profile/update_profile.html', {'form': form})
 
    
 

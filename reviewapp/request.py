@@ -131,6 +131,7 @@ def get_a_profile(id):
 def update_a_profile(id, profile_pic, bio, phone_number):
     profile_url = 'https://app-m-tribune.herokuapp.com/api/profiles/profile-id/{}/'.format(id)
     authorize = config('AUTHORIZATION_TOKEN')
+    print(authorize)
     values = {
         #'user': name,
         'profile_pic': profile_pic,

@@ -5,7 +5,14 @@
 {{block.super}}
 <div class="container-fluid">
     <div class="container">
-
+        <h1 class="text-center">Update your profile below:</h1>
+        <hr>
+        <form action="{% url 'update-profile' %}" method="post" id="subscribe">
+            {% csrf_token %}
+        
+            {% bootstrap_form form layout='inline' %}
+            <input type="submit" value="Update">
+          </form>
     </div>
 </div>
 

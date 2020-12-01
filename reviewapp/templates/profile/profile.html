@@ -48,7 +48,7 @@
             <div class="col-md-4">
                 <hr>
                 {% if user == current_user %}
-                    <a href=""><h4>Edit profile (add/change profile pic and bio)</h4></a>
+                    <a href="{% url 'update-profile' %} "><h4>Edit profile (add/change profile pic and bio)</h4></a>
                     <hr>
                     <a href=""><h4>Upload image (post)</h4></a>
     
