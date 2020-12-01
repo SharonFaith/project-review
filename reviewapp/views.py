@@ -3,7 +3,7 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 import datetime as dt
 from .models import Projects, Profile
 from django.core.exceptions import ObjectDoesNotExist
-from .forms import UpdateProfile
+from .forms import UpdateProfile, UploadProject
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
@@ -120,6 +120,7 @@ def profile(request, id):
    #print(UserFollowing.objects.all())
 
    projects = current_profile.projects.all()
+   print(projects)
    
    return render(request, 'profile/profile.html', {'user_profile': current_profile, 'projects': projects, 'current_user':current_user,  })
 
@@ -128,6 +129,7 @@ def update_profile(request, profile_id):
     current_user = request.user
 
     id = profile_id
+    
     print(id)
 
     if request.method == 'POST':
@@ -145,9 +147,50 @@ def update_profile(request, profile_id):
     
     form = UpdateProfile()
 
-    return render(request, 'profile/update_the_profile.html', {'form': form})
+    return render(request, 'profile/update_the_profile.html', {'form': form, 'id':id})
+
+
+@login_required(login_url='/accounts/login')
+def upload_project(request):
+
+   current_user = request.user
+   
+   profiles = Profile.objects.all()
+   print(profiles)
+   current_profile = None
+
+  # print(current_user.id)
+
+   for user_profile in profiles:
+  #    print(profile.insta_user)
+      if user_profile.user == current_user:
+         current_profile = user_profile
+      
+
+   print(current_profile)
+
+   if current_profile == None:
+      current_profile = Profile.objects.create(insta_user= current_user)
+
+   print(current_profile)
 
    
+
+   if request.method == 'POST':
+      form = UploadProject(request.POST, request.FILES)
+
+      if form.is_valid():
+         project = form.save(commit=False)
+         project.profile = current_profile
+         
+         project.save()
+      return redirect(profile, id = current_user.id)
+   else:
+      form = UploadProject()
+   
+   return render(request, 'profile/upload_project.html', {'form': form})
+
+
 
 class ProfileList(APIView):
     permission_classes = (IsAdminOrReadOnly,)

@@ -7,3 +7,9 @@ class UpdateProfile(forms.ModelForm):
     class Meta:
         model = Profile
         exclude = ['user']
+
+class UploadProject(forms.ModelForm):
+
+    class Meta:
+        model = Projects
+        exclude = ['profile']

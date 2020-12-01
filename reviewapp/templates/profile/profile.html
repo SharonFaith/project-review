@@ -50,7 +50,7 @@
                 {% if user == current_user %}
                     <a href="{% url 'update-profile' user_profile.id %} "><h4>Edit profile (add/change profile pic and bio)</h4></a>
                     <hr>
-                    <a href=""><h4>Upload image (post)</h4></a>
+                    <a href="{% url 'upload-project' %}"><h4>Post a project</h4></a>
     
                 
                 {% endif %}
@@ -64,6 +64,55 @@
               
         </div>
         <hr>
+        {% for project in projects %}
+        <div class="row">
+                    <hr>
+
+                    
+                        <div class="col-md-4">
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class = "card" style="background-color: whitesmoke; border: whitesmoke; padding: 15px; margin: 10px;">
+                                <div class = "card-header text-center" style="background-color: whitesmoke;">
+                                    <p>{{project.landing_page}}</p>
+                                    <img class="img-rounded"  src="{{project.landing_page}}" style="max-width: 2em; margin-right: 10px;">
+                                    <a href="{% url 'single-project' project.id %}"><strong><p>Project Title: </p></strong>{{project.title}}</a>
+                                </div>
+                                <div class = "card-body">
+                                    <a href="{% url 'single-project' project.id %}"><img src="{{project.landing_page}}" class="img-responsive" alt="Image" style="padding: 5px; width: 100%; height: 100%;"></a>
+                                    <p><strong>Description: </strong>{{project.description}}</p>
+                                </div>
+                                <div class="card-footer">
+                                   
+                                    <a href="{% url 'single-project' project.id %}"><p>View more</p></a>
+                                    <p><strong>Live site: </strong>Click <a href="{{project.live_site}}">here</a> to access the live site.</p>
+                                    
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+
+                        </div>
+                        
+                
+            
+            
+        
+        </div>
+        {% empty %}
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8" style="color: white; text-align: center;">
+                        
+                        <h3>No projects yet </h3>
+                       
+                    </div>
+                    <br>
+                    <div class="col-md-2"></div>
+
+        {% endfor %}
     </div>
 </div>
 

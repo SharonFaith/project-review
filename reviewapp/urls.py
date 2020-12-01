@@ -1,7 +1,7 @@
 from django.urls import path, re_path
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import welcome, index, search_results, update_profile, profile, single_project, rate_project
+from .views import welcome, upload_project, index, search_results, update_profile, profile, single_project, rate_project
 from . import views
 
 urlpatterns = [
@@ -16,7 +16,7 @@ urlpatterns = [
     re_path(r'api/projects/project-id/(?P<pk>[0-9]+)/', views.ProjectDescription.as_view()),
     re_path(r'api/profiles/profile-id/(?P<pk>[0-9]+)/', views.ProfileDescription.as_view()),
     path('search/', search_results, name='search-results'),
-    
+    path('upload/project', upload_project, name='upload-project')
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
