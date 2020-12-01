@@ -94,3 +94,81 @@ def get_projects():
 
     return project_results
 
+
+def get_a_profile(id):
+    
+    profile_url = 'https://app-m-tribune.herokuapp.com/api/profiles/profile-id/{}/'.format(id)
+
+    with urllib.request.urlopen(profile_url) as url:
+
+        get_profile_data = url.read()                     
+        get_profile_response = json.loads(get_profile_data)
+      
+        profile_object = None
+        if get_profile_response:
+            id = get_profile_response.get('id')            
+            user = get_profile_response.get('user')
+            profile_pic = get_profile_response.get('profile_pic')
+            bio= get_profile_response.get('bio')
+            phone_number = get_profile_response.get('phone_number')
+            projects = get_profile_response.get('projects')
+
+            profile_object = DisplayProfile(id, user, profile_pic, bio, phone_number, projects)
+    
+    #print(profile_object)
+    return profile_object
+
+
+def update_a_profile(id, profile_pic, bio, phone_number):
+    profile_url = 'https://app-m-tribune.herokuapp.com/api/profiles/profile-id/{}/'.format(id)
+    authorize = config('AUTHORIZATION_TOKEN')
+    values = {
+        #'user': name,
+        'profile_pic': profile_pic,
+        'bio': bio,
+        'phone_number':phone_number
+    }
+    headers = {
+        'Authorization' : authorize
+    }
+    
+    data = urllib.parse.urlencode(values)
+   
+    data = data.encode('ascii')
+
+   # data = json.loads(data.decode('utf-8'))
+   
+    req = urllib.request.Request(profile_url, data, headers, method='PUT')
+    print(data)
+    with urllib.request.urlopen(req) as response:
+        pass
+        #the_page = response.read()
+    print(response.status)
+    print(response.reason)
+
+
+
+def get_a_project(id):
+    
+    project_url = 'https://app-m-tribune.herokuapp.com/api/projects/project-id/{}/'.format(id)
+
+    with urllib.request.urlopen(project_url) as url:
+
+        get_project_data = url.read()                     
+        get_project_response = json.loads(get_project_data)
+      
+        project_object = None
+        if get_project_response:
+            id = get_project_response.get('id')            
+            profile = get_project_response.get('profile')
+            title = get_project_response.get('title')
+            landing_page = get_project_response.get('landing_page')
+            description = get_project_response.get('description')
+            live_site = get_project_response.get('live_site')
+
+            project_object = DisplayProjects(id, profile, title, landing_page, description, live_site)
+    
+    #print(project_object)
+    return project_object
+
+
