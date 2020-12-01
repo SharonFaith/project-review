@@ -87,24 +87,36 @@ def profile(request, id):
    profiles = get_profiles()
 
    #projects = current_user.projects.all()
-   
-  
-   #profiles = Profile.objects.all()
- #  print(profiles)
+   db_profiles = Profile.objects.all()
+
    current_profile = None
+  # pro_files = []
+   for profile in db_profiles:
+       if profile.user == current_user:
+           current_profile = profile
+           #pro_files.append(profile)
+    
+   #profile = pro_files[1]
+   print(profile)       
+   #current_profile = get_a_profile(profile.id)
+   
 
- #  print(current_user.id)
-
-   for user_profile in profiles:
- #     print(profile.insta_user)
-      if user_profile.user == current_user:
-         current_profile = user_profile
-
-   print(current_profile)
    if current_profile == None:
       current_profile = Profile.objects.create(user= current_user)
+       
+ #  print(current_user.id)
 
+#   for user_profile in db_profiles:
+      #print(user_profile.user)
+ #     if user_profile.user == current_user.username:
+ #        print(user_profile.user.id)
+ #        print(current_user.id)
+  #       current_profile = user_profile
+         
+
+   print(current_profile)
  
+   print(current_profile.id)
    #print(UserFollowing.objects.all())
 
    projects = current_profile.projects.all()
@@ -112,10 +124,10 @@ def profile(request, id):
    return render(request, 'profile/profile.html', {'user_profile': current_profile, 'projects': projects, 'current_user':current_user,  })
 
 @login_required(login_url='/accounts/login')
-def update_profile(request):
+def update_profile(request, profile_id):
     current_user = request.user
 
-    id = current_user.profile.first().id
+    id = profile_id
     print(id)
 
     if request.method == 'POST':
@@ -133,7 +145,7 @@ def update_profile(request):
     
     form = UpdateProfile()
 
-    return render(request, 'profile/update_profile.html', {'form': form})
+    return render(request, 'profile/update_the_profile.html', {'form': form})
 
    
 
