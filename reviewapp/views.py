@@ -107,7 +107,7 @@ def rate_project(request, proj_id):
              
     except IntegrityError as e:
         phrase = 'You can only rate a post once' 
-        formtrue = False
+        formtrue = True
     return render(request, 'rateform.html', {'form':form, 'the_id': the_id, 'phrase':phrase, 'formtrue': formtrue})
 
 
