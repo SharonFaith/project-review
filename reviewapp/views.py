@@ -78,9 +78,9 @@ def rate_project(request, proj_id):
             new_rate.user_rating = current_user
             new_rate.project_rated = current_project
 
-            totalrates = new_rate.design + new_rate.usability + new_rate.content
+            totalrates = int(new_rate.design) + int(new_rate.usability) + int(new_rate.content)
 
-            total_average = totalrates % 3
+            total_average = float(totalrates % 3)
 
             new_rate.overall = total_average
 
