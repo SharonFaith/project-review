@@ -10,11 +10,11 @@ urlpatterns = [
     path('projects/<project_id>/', single_project, name='single-project'),
     path('profile/<id>/', profile, name='profile'),
     path('rateproject/<proj_id>/', rate_project, name='rate-project'),
-    path('api/projects/', views.ProjectList.as_view()),
-    path('api/profiles/', views.ProfileList.as_view()),
+    path('api/theprojects/', views.ProjectList.as_view()),
+    path('api/theprofiles/', views.ProfileList.as_view()),
     path('update_the_profile/<profile_id>', update_profile, name='update-profile'),
-    re_path(r'api/projects/project-id/(?P<pk>[0-9]+)/', views.ProjectDescription.as_view()),
-    re_path(r'api/profiles/profile-id/(?P<pk>[0-9]+)/', views.ProfileDescription.as_view()),
+    re_path(r'api/theprojects/project-id/(?P<pk>[0-9]+)/', views.ProjectDescription.as_view()),
+    re_path(r'api/theprofiles/profile-id/(?P<pk>[0-9]+)/', views.ProfileDescription.as_view()),
     path('search/', search_results, name='search-results'),
     path('upload/project', upload_project, name='upload-project')
 ]
