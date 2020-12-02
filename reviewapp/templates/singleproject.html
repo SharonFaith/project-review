@@ -32,7 +32,60 @@
                 <br>
                 <a href="{% url 'rate-project' project.id %}"><h3>Add a rating </h3></a>
                 <br>
-               
+
+                {% for rating in ratings %}
+                <div class="row">
+                            <hr>
+        
+                            
+                                <div class="col-md-4">
+        
+                                </div>
+                                <div class="col-md-4">
+                                    <div class = "card" style="background-color: whitesmoke; border: whitesmoke; padding: 15px; margin: 10px;">
+                                        <div class = "card-header text-center" style="background-color: whitesmoke;">
+                                            
+                                            
+                                            <p><em>By {{rating.user_rating}}</em></p>
+                                        </div>
+                                        <div class = "card-body">
+                                           
+                                            <p><strong>Design: </strong>{{rating.design}}</p>
+                                            <p><strong>Usability: </strong>{{rating.usability}}</p>
+                                            <p><strong>Content: </strong>{{rating.content}}</p>
+
+                                        </div>
+                                        <div class="card-footer">
+                                           
+                                            
+                                            <p><strong>MEAN SCORE by {{rating.user_rating}}: </strong>{{rating.overall}}</p>
+                                            
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+        
+                                </div>
+                                
+                        
+                    
+                    
+                
+                </div>
+                {% empty %}
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8" style="color: white; text-align: center;">
+                                
+                                <h3>No ratings yet </h3>
+                               
+                            </div>
+                            <br>
+                            <div class="col-md-2"></div>
+        
+                {% endfor %}
+                
             </div>
         </div>
         <hr>

@@ -54,7 +54,12 @@ def single_project(request, project_id):
     
     project = get_a_project(project_id)
 
-    return render(request, 'singleproject.html', {'project':project})
+    ratings = Rating.objects.filter(project_rated = project_id).all()
+    the_ratings = []
+    for rating in ratings:
+        the_ratings.insert(0, rating)
+
+    return render(request, 'singleproject.html', {'project':project, 'ratings': the_ratings})
 
 @login_required(login_url='/accounts/login')
 def rate_project(request, proj_id):
