@@ -20,8 +20,6 @@ class UploadProject(forms.ModelForm):
         model = Projects
         exclude = ['profile']
 
-design,usability
-content
 
 
 class RatingsForm(forms.ModelForm):
