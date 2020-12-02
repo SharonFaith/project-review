@@ -10,7 +10,7 @@ class UpdateProfile(forms.ModelForm):
 
 
 class UpdateProfileForm(forms.Form):
-    profile_pic = forms.ImageField(required=True)
+    profile_pic = forms.ImageField(required=True, upload_to = 'profilepics/')
     bio = forms.CharField(max_length=255, required=True)
     phone_number = forms.CharField(max_length=10, required=True)
 
@@ -19,4 +19,6 @@ class UploadProject(forms.ModelForm):
     class Meta:
         model = Projects
         exclude = ['profile']
+
+
 

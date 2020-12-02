@@ -35,6 +35,18 @@ class Projects(models.Model):
 class New(models.Model):
     name = models.CharField(max_length=30)
 
+class Rating(models.Model):
+    user_rating = models.ForeignKey(User, on_delete=models.CASCADE, default = None, related_name='ratings_done')
+    project_rated = models.ForeignKey(Projects, on_delete=models.CASCADE,default = None, related_name='ratings')
+    design = models.IntegerField()
+    usability = models.IntegerField()
+    content= models.IntegerField()
+    overall= models.IntegerField()
+
+    class Meta:
+        unique_together = ('user_rating', 'project_rated')
+
+
 
 class DisplayProfile:
     def __init__(self, id, user, profile_pic, bio, phone_number, projects):
