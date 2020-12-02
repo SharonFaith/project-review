@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 import datetime as dt
-from .models import Projects, Profile
+from .models import Projects, Profile, Rating
 from django.core.exceptions import ObjectDoesNotExist
-from .forms import UpdateProfile, UploadProject, UpdateProfileForm
+from .forms import UpdateProfile, UploadProject, UpdateProfileForm, RatingsForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
@@ -58,8 +58,36 @@ def single_project(request, project_id):
 
 @login_required(login_url='/accounts/login')
 def rate_project(request, proj_id):
+    current_user = request.user
+    proj_id = the_id
+    proect_id = proj_id
+    current_project = Projects.objects.filter(id = the_id)
+    print("hello")
+    print(current_project.id)
+    if request.method == 'POST':
+        form = Ratings(request.POST)
 
-    return render(request, 'rateform.html')
+        if form.is_valid():
+            new_rate = form.save(commit=False)
+            new_rate.user_rating = current_user
+            new_rate.project_rated = current_project
+
+            totalrates = new_rate.design + new_rate.usability + new_rate.content
+
+            total_average = totalrates % 3
+
+            new_rate.overall = total_average
+
+            new_rate.save()
+           
+        return redirect(single_project, proj_id = )
+    else:
+        form = RatingsForm()
+   
+   
+
+
+    return render(request, 'rateform.html', {'form':form})
 
 
 @login_required(login_url='/accounts/login')

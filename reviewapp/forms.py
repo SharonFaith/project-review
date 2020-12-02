@@ -1,5 +1,5 @@
 from django import forms
-from .models import Projects, Profile
+from .models import Projects, Profile, Rating
 from django.core.exceptions import ValidationError
 from cloudinary.models import CloudinaryField
 
@@ -20,5 +20,14 @@ class UploadProject(forms.ModelForm):
         model = Projects
         exclude = ['profile']
 
+design,usability
+content
+
+
+class RatingsForm(forms.ModelForm):
+
+    class Meta:
+        model = Rating
+        exclude = ['user_rating', 'project_rated', 'overall']
 
 
