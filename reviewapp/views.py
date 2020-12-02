@@ -87,7 +87,7 @@ def rate_project(request, proj_id):
    
 
 
-    return render(request, 'rateform.html', {'form':form})
+    return render(request, 'rateform.html', {'form':form, 'the_id': the_id})
 
 
 @login_required(login_url='/accounts/login')
