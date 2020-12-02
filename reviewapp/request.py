@@ -130,15 +130,12 @@ def get_a_profile(id):
 
 
 
-def update_a_profile(id, profile_pic, bio, phone_number):
+def update_a_profile(id, current_user, bio, phone_number):
     profile_url = 'https://awwardreview-app.herokuapp.com/api/theprofiles/profile-id/{}/'.format(id)
-    users = User.objects.all()
-    the_user = None
-    for a_user in users:
-        print(a_user)
-        if a_user.profile.first().id == id:
-            a_user = the_user
-    print(the_user)
+    #users = User.objects.all()
+    the_user = current_user
+   
+    #print(the_user)
     token = Token.objects.filter(user = the_user)
     print("hello" + token)
     authorize = token
