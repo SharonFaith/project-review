@@ -119,7 +119,7 @@ def profile(request, id):
    print(current_profile.id)
    #print(UserFollowing.objects.all())
 
-   projects = current_profile.projects.all()
+   projects = current_profile.projects.all().order_by('-id')
    print(projects)
    
    return render(request, 'profile/profile.html', {'user_profile': current_profile, 'projects': projects, 'current_user':current_user,  })
