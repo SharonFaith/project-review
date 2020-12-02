@@ -18,7 +18,7 @@
 
 </head>
 
-<body>
+<body class="text-center">
     {% include 'navbar.html' %}
     <form  action="{% url 'rate-project' the_id %} " method="post" enctype="multipart/form-data">
         {%csrf_token%}
