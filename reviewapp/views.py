@@ -65,6 +65,7 @@ def rate_project(request, proj_id):
     print("hello")
     print(current_project.id)
     if request.method == 'POST':
+        formtrue=False
         form = RatingsForm(request.POST)
 
         if form.is_valid():
@@ -80,10 +81,10 @@ def rate_project(request, proj_id):
 
             new_rate.save()
            
-        return redirect(single_project, proj_id = the_id )
+        #return redirect(single_project, proj_id = the_id )
     else:
         form = RatingsForm()
-   
+        formtrue=True
    
 
 
