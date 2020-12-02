@@ -32,6 +32,9 @@ class Projects(models.Model):
     description = models.TextField()
     live_site = models.URLField()
 
+class New(models.Model):
+    name = models.CharField(max_length=30)
+
 
 class DisplayProfile:
     def __init__(self, id, user, profile_pic, bio, phone_number, projects):
