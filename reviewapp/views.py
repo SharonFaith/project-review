@@ -61,7 +61,7 @@ def rate_project(request, proj_id):
     current_user = request.user
     the_id = proj_id
    # project_id = proj_id
-    current_project = Projects.objects.filter(id = the_id)
+    current_project = Projects.objects.filter(id = the_id).first()
     print("hello")
     print(current_project.id)
     if request.method == 'POST':
