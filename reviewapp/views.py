@@ -143,14 +143,14 @@ def update_profile(request, profile_id):
             bio = form.cleaned_data['bio']
             phone_number = form.cleaned_data['phone_number']
     #        recipient.save()
-            
+        # new_profile = Profile(user = current_user, bio = bio, phone_number =phone_number )
             
             print(profile_pic)
             print(bio)
             print(phone_number)
-            update_a_profile(id, current_user, profile_pic, bio, phone_number)
+          #  update_a_profile(id, current_user, profile_pic, bio, phone_number)
 
-            return redirect(profile, id = id)
+           # return redirect(profile, id = id)
    # else:
     
     form = UpdateProfileForm()
