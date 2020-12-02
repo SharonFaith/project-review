@@ -3,7 +3,7 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 import datetime as dt
 from .models import Projects, Profile
 from django.core.exceptions import ObjectDoesNotExist
-from .forms import UpdateProfile, UploadProject
+from .forms import UpdateProfile, UploadProject, UpdateProfileForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
@@ -147,7 +147,7 @@ def update_profile(request, profile_id):
             return redirect(profile, id = id)
    # else:
     
-    form = UpdateProfile()
+    form = UpdateProfileForm()
 
     return render(request, 'profile/update_the_profile.html', {'form': form, 'id':id})
 
