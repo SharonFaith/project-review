@@ -140,23 +140,13 @@ def update_a_profile(id, current_user, profile_pic, bio, phone_number):
     print(token)
     authorize = token
     print(authorize)
-
-    values = None
-    if profile_pic == None and bio == None and phone_number == None:
-        values = {
-            
-            'bio': None
-
-        }
-    else:
-        values = {
-            #'user': name,
-            'profile_pic': profile_pic,
-            'bio': bio,
-            'phone_number':phone_number
-        }
-
-
+    
+    values = {
+        #'user': name,
+        'profile_pic': profile_pic,
+        'bio': bio,
+        'phone_number':phone_number
+    }
     headers = {
         'Authorization' : authorize
     }
