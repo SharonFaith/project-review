@@ -59,8 +59,8 @@ def single_project(request, project_id):
 @login_required(login_url='/accounts/login')
 def rate_project(request, proj_id):
     current_user = request.user
-    proj_id = the_id
-    proect_id = proj_id
+    the_id = proj_id
+   # project_id = proj_id
     current_project = Projects.objects.filter(id = the_id)
     print("hello")
     print(current_project.id)
@@ -80,7 +80,7 @@ def rate_project(request, proj_id):
 
             new_rate.save()
            
-        return redirect(single_project, proj_id = )
+        return redirect(single_project, proj_id = the_id )
     else:
         form = RatingsForm()
    
