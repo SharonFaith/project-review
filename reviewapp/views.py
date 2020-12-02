@@ -69,12 +69,14 @@ def rate_project(request, proj_id):
     current_project = Projects.objects.filter(id = the_id).first()
     print("hello")
     print(current_project.id)
+    phrase = None
+
 
     try:
         if request.method == 'POST':
-            formtrue=False
+            
             form = RatingsForm(request.POST)
-
+            formtrue=False
             if form.is_valid():
                 new_rate = form.save(commit=False)
                 new_rate.user_rating = current_user
@@ -91,13 +93,13 @@ def rate_project(request, proj_id):
             #return redirect(single_project, proj_id = the_id )
         else:
             form = RatingsForm()
-            formtrue=True
+            formtrue = True
     except IntegrityError as e:
         phrase = 'You can only rate a post once'
    
+     
 
-
-    return render(request, 'rateform.html', {'form':form, 'the_id': the_id})
+    return render(request, 'rateform.html', {'form':form, 'the_id': the_id, 'phrase':phrase})
 
 
 @login_required(login_url='/accounts/login')
