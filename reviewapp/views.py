@@ -135,10 +135,16 @@ def update_profile(request, profile_id):
     if request.method == 'POST':
         form = UpdateProfile(request.POST, request.FILES)
         if form.is_valid():
-            updated_profile = form.save(commit=False)
-            profile_pic = updated_profile.profile_pic.url
-            bio = updated_profile.bio
-            phone_number = updated_profile.phone_number 
+           # updated_profile = form.save(commit=False)
+            #profile_pic = updated_profile.profile_pic.url
+            #bio = updated_profile.bio
+            #phone_number = updated_profile.phone_number 
+            profile_pic = form.cleaned_data['profile_pic']
+            bio = form.cleaned_data['bio']
+            phone_number = form.cleaned_data['phone_number']
+    #        recipient.save()
+            
+            
             print(profile_pic)
             print(bio)
             print(phone_number)
