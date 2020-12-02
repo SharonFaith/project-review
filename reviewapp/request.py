@@ -134,18 +134,26 @@ def update_a_profile(id, current_user, profile_pic, bio, phone_number):
     profile_url = 'https://awwardreview-app.herokuapp.com/api/theprofiles/profile-id/{}/'.format(id)
     #users = User.objects.all()
     the_user = current_user
-   
-    #print(the_user)
+
+    #print(the_user) = 
     token = Token.objects.filter(user = the_user)
     print(token)
     authorize = token
     print(authorize)
-    values = {
-        #'user': name,
-        'profile_pic': profile_pic,
-        'bio': bio,
-        'phone_number':phone_number
-    }
+
+    if profile_pic == None and bio == None and phone_number == None:
+        values = {
+            'bio': ''
+        }
+    else:
+        values = {
+            #'user': name,
+            'profile_pic': profile_pic,
+            'bio': bio,
+            'phone_number':phone_number
+        }
+
+        
     headers = {
         'Authorization' : authorize
     }
