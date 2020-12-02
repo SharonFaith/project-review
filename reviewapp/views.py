@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 import datetime as dt
 from .models import Projects, Profile, Rating
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, IntegrityError
 from .forms import UpdateProfile, UploadProject, UpdateProfileForm, RatingsForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
