@@ -136,7 +136,7 @@ def update_profile(request, profile_id):
         form = UpdateProfile(request.POST, request.FILES)
         if form.is_valid():
             updated_profile = form.save(commit=False)
-            profile_pic = updated_profile.profile_pic
+            profile_pic = updated_profile.profile_pic.url
             bio = updated_profile.bio
             phone_number = updated_profile.phone_number 
             print(profile_pic)
