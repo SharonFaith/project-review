@@ -96,7 +96,7 @@ def rate_project(request, proj_id):
                 totalrates =  [design, usability, content]
                 print(totalrates)
                 rates = sum(totalrates)
-                total_average = float(rates//3)
+                total_average = float(rates/3)
 
                 new_rate.overall = total_average
 
