@@ -73,7 +73,7 @@ def rate_project(request, proj_id):
     phrase = None
 
 
-    try:
+    #try:
         if request.method == 'POST':
         
             form = RatingsForm(request.POST)
@@ -82,9 +82,16 @@ def rate_project(request, proj_id):
                 new_rate = form.save(commit=False)
                 new_rate.user_rating = current_user
                 new_rate.project_rated = current_project
+                design = int(new_rate.design)
+                usability = int(new_rate.usability)
+                content = int(new_rate.content)
 
-                totalrates = int(new_rate.design) + int(new_rate.usability) + int(new_rate.content)
-
+                print(design)
+                print(usability)
+                print(content)
+               
+                totalrates =  design + usability + content
+                print(totalrates)
                 total_average = float(totalrates % 3)
 
                 new_rate.overall = total_average
@@ -98,8 +105,8 @@ def rate_project(request, proj_id):
             formtrue = True
   
              
-    except IntegrityError as e:
-        phrase = 'You can only rate a post once' 
+    #except IntegrityError as e:
+       # phrase = 'You can only rate a post once' 
 
     return render(request, 'rateform.html', {'form':form, 'the_id': the_id, 'phrase':phrase, 'formtrue': formtrue})
 
