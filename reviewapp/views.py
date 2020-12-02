@@ -64,13 +64,13 @@ def single_project(request, project_id):
 
 @login_required(login_url='/accounts/login')
 def rate_project(request, proj_id):
-    current_user = request.user
-    the_id = proj_id
-   # project_id = proj_id
-    current_project = Projects.objects.filter(id = the_id).first()
-    print("hello")
-    print(current_project.id)
-    phrase = None
+        current_user = request.user
+        the_id = proj_id
+    # project_id = proj_id
+        current_project = Projects.objects.filter(id = the_id).first()
+        print("hello")
+        print(current_project.id)
+        phrase = None
 
 
     #try:
@@ -108,7 +108,7 @@ def rate_project(request, proj_id):
     #except IntegrityError as e:
        # phrase = 'You can only rate a post once' 
 
-    return render(request, 'rateform.html', {'form':form, 'the_id': the_id, 'phrase':phrase, 'formtrue': formtrue})
+        return render(request, 'rateform.html', {'form':form, 'the_id': the_id, 'phrase':phrase, 'formtrue': formtrue})
 
 
 @login_required(login_url='/accounts/login')
