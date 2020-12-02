@@ -21,9 +21,11 @@ class UploadProject(forms.ModelForm):
         exclude = ['profile']
 
 
-
+CHOICES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 class RatingsForm(forms.ModelForm):
-
+    design = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect())
+    usability = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect())
+    content= forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect())
     class Meta:
         model = Rating
         exclude = ['user_rating', 'project_rated', 'overall']
