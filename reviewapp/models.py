@@ -38,10 +38,14 @@ class New(models.Model):
 class Rating(models.Model):
     user_rating = models.ForeignKey(User, on_delete=models.CASCADE, default = None, related_name='ratings_done')
     project_rated = models.ForeignKey(Projects, on_delete=models.CASCADE,default = None, related_name='ratings')
-    design = models.IntegerField()
-    usability = models.IntegerField()
-    content= models.IntegerField()
-    overall= models.IntegerField()
+    #design = models.IntegerField()
+    #usability = models.IntegerField()
+    #content= models.IntegerField()
+    #overall= models.IntegerField()
+    design = models.DecimalField(max_digits=4, decimal_places=2)
+    usability = models.DecimalField(max_digits=4, decimal_places=2)
+    content= models.DecimalField(max_digits=4, decimal_places=2)
+    overall= models.DecimalField(max_digits=4, decimal_places=2)
 
     class Meta:
         unique_together = ('user_rating', 'project_rated')
