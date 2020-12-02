@@ -9,7 +9,7 @@ class UpdateProfile(forms.ModelForm):
         exclude = ['user']
 
 
-class UpdateProfileForm(form.Form):
+class UpdateProfileForm(forms.Form):
     profile_pic = forms.ImageField(required=True)
     bio = forms.CharField(max_length=255, required=True)
     phone_number = forms.CharField(max_length=10, required=True)
