@@ -92,7 +92,7 @@ def rate_project(request, proj_id):
         else:
             form = RatingsForm()
             formtrue=True
-   except IntegrityError as e:
+    except IntegrityError as e:
         phrase = 'You can only rate a post once'
    
 
