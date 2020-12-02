@@ -97,7 +97,7 @@ def profile(request, id):
            #pro_files.append(profile)
     
    #profile = pro_files[1]
-   print(profile)       
+   print(current_profile)       
    #current_profile = get_a_profile(profile.id)
    
 
