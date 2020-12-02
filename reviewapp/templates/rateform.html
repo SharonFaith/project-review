@@ -28,6 +28,8 @@
             {% bootstrap_form form%}
             <input type="submit" class="btn btn-success btn-lg" value="Post">
         </form>
+    {% elif phrase != '' %}
+        <p>  </p>
     {% else %}
     <p>Your rating has been added. Click <a href="{% url 'single-project' the_id %}">here</a> to view the ratings</p>
     {% endif %}   

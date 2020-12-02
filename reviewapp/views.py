@@ -70,7 +70,7 @@ def rate_project(request, proj_id):
     current_project = Projects.objects.filter(id = the_id).first()
     print("hello")
     print(current_project.id)
-    phrase = None
+    phrase = ''
 
 
     try:
