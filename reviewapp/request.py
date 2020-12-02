@@ -136,7 +136,7 @@ def update_a_profile(id, profile_pic, bio, phone_number):
     the_user = None
     for a_user in users:
         print(a_user)
-        if a_user.profile.id == id:
+        if a_user.profile.first().id == id:
             a_user = the_user
     print(the_user)
     token = Token.objects.filter(user = the_user)
