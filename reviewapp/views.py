@@ -82,9 +82,12 @@ def rate_project(request, proj_id):
                 new_rate = form.save(commit=False)
                 new_rate.user_rating = current_user
                 new_rate.project_rated = current_project
-                design = int(new_rate.design)
-                usability = int(new_rate.usability)
-                content = int(new_rate.content)
+                
+                
+                
+                design = float(new_rate.design)
+                usability = float(new_rate.usability)
+                content = float(new_rate.content)
 
                 print(design)
                 print(usability)
