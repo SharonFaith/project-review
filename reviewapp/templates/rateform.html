@@ -20,6 +20,7 @@
 
 <body class="text-center">
     {% include 'navbar.html' %}
+    <h3>{{phrase}}</h3>
     {% if formtrue %}
         <form  action="{% url 'rate-project' the_id %} " method="post" enctype="multipart/form-data">
             {%csrf_token%}
