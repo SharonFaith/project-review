@@ -76,11 +76,11 @@
                             <div class = "card" style="background-color: whitesmoke; border: whitesmoke; padding: 15px; margin: 10px;">
                                 <div class = "card-header text-center" style="background-color: whitesmoke;">
                                     <p>{{project.landing_page}}</p>
-                                    <img class="img-rounded"  src="{{project.landing_page}}" style="max-width: 2em; margin-right: 10px;">
+                                    <img class="img-rounded"  src="{{project.landing_page.url}}" style="max-width: 2em; margin-right: 10px;">
                                     <a href="{% url 'single-project' project.id %}"><strong><p>Project Title: </p></strong>{{project.title}}</a>
                                 </div>
                                 <div class = "card-body">
-                                    <a href="{% url 'single-project' project.id %}"><img src="{{project.landing_page}}" class="img-responsive" alt="Image" style="padding: 5px; width: 100%; height: 100%;"></a>
+                                    <a href="{% url 'single-project' project.id %}"><img src="{{project.landing_page.url}}" class="img-responsive" alt="Image" style="padding: 5px; width: 100%; height: 100%;"></a>
                                     <p><strong>Description: </strong>{{project.description}}</p>
                                 </div>
                                 <div class="card-footer">
