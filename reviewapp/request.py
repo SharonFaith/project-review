@@ -137,7 +137,7 @@ def update_a_profile(id, current_user, profile_pic, bio, phone_number):
    
     #print(the_user)
     token = Token.objects.filter(user = the_user)
-    print("hello" + token)
+    print(token)
     authorize = token
     print(authorize)
     values = {
