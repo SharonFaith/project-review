@@ -57,7 +57,7 @@ def process_projects(project_list):
 
 def get_profiles():
 
-    get_profiles_url = 'https://app-m-tribune.herokuapp.com/api/profiles/'
+    get_profiles_url = 'https://awwardreview-app.herokuapp.com/api/theprofiles/'
 
     
     
@@ -80,7 +80,7 @@ def get_profiles():
 
 def get_projects():
 
-    get_projects_url = 'https://app-m-tribune.herokuapp.com/api/projects/'
+    get_projects_url = 'https://awwardreview-app.herokuapp.com/api/theprojects/'
 
     
     
@@ -104,7 +104,7 @@ def get_projects():
 
 def get_a_profile(id):
     
-    profile_url = 'https://app-m-tribune.herokuapp.com/api/profiles/profile-id/{}/'.format(id)
+    profile_url = 'https://awwardreview-app.herokuapp.com/api/theprofiles/profile-id/{}/'.format(id)
     image_url = 'https://res.cloudinary.com/{}/'.format(cloud_name)
     with urllib.request.urlopen(profile_url) as url:
 
@@ -131,7 +131,7 @@ def get_a_profile(id):
 
 
 def update_a_profile(id, profile_pic, bio, phone_number):
-    profile_url = 'https://app-m-tribune.herokuapp.com/api/profiles/profile-id/{}/'.format(id)
+    profile_url = 'https://awwardreview-app.herokuapp.com/api/theprofiles/profile-id/{}/'.format(id)
     users = User.objects.all()
     the_user = None
     for a_user in users:
@@ -171,7 +171,7 @@ def update_a_profile(id, profile_pic, bio, phone_number):
 
 def get_a_project(id):
     
-    project_url = 'https://app-m-tribune.herokuapp.com/api/projects/project-id/{}/'.format(id)
+    project_url = 'https://awwardreview-app.herokuapp.com/api/theprojects/project-id/{}/'.format(id)
     image_url = 'https://res.cloudinary.com/{}/'.format(cloud_name)
     with urllib.request.urlopen(project_url) as url:
 
