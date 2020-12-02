@@ -139,7 +139,9 @@ def update_profile(request, profile_id):
             profile_pic = updated_profile.profile_pic
             bio = updated_profile.bio
             phone_number = updated_profile.phone_number 
-
+            print(profile_pic)
+            print(bio)
+            print(phone_number)
             update_a_profile(id, current_user, profile_pic, bio, phone_number)
 
             return redirect(profile, id = id)
