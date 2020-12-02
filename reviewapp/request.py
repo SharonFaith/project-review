@@ -130,7 +130,7 @@ def get_a_profile(id):
 
 
 
-def update_a_profile(id, current_user, bio, phone_number):
+def update_a_profile(id, current_user, profile_pic, bio, phone_number):
     profile_url = 'https://awwardreview-app.herokuapp.com/api/theprofiles/profile-id/{}/'.format(id)
     #users = User.objects.all()
     the_user = current_user
