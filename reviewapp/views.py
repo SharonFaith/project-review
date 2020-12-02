@@ -65,7 +65,7 @@ def rate_project(request, proj_id):
     print("hello")
     print(current_project.id)
     if request.method == 'POST':
-        form = Ratings(request.POST)
+        form = RatingsForm(request.POST)
 
         if form.is_valid():
             new_rate = form.save(commit=False)
