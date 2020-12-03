@@ -17,7 +17,7 @@
 
         {% else %}
 
-        <p>An error occured when trying to upload your profile pic and bio. Click <a href="{% url 'profile' an_id %}">here</a> to go back to your profile</p>
+        <p>An error occured when trying to upload your profile pic and bio. Click <a href="{% url 'profile' user.id %}">here</a> to go back to your profile</p>
         {% endif %}
     </div>
 </div>
