@@ -68,8 +68,13 @@ def single_project(request, project_id):
         rating_total.append(rating.overall)
 
     sum_ratings = sum(rating_total)
+    
+    if sum_ratings != 0:
+        overall_mean = sum_ratings/num_ratings
+    else:
+        overall_mean = 0
+    
 
-    overall_mean = sum_ratings/num_ratings
 
     return render(request, 'singleproject.html', {'project':project, 'ratings': the_ratings, 'overall_rating':overall_mean})
 
