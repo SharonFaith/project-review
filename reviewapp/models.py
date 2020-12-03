@@ -43,6 +43,18 @@ class Projects(models.Model):
     description = models.TextField()
     live_site = models.URLField()
 
+    def save_project(self):
+        self.save()
+
+    def delete_project(self):
+        self.delete()
+
+    @classmethod
+    def update_project(cls, id, updates):
+        to_update = cls.objects.filter(id = id)
+        to_update.update(description = updates)
+
+
 class New(models.Model):
     name = models.CharField(max_length=30)
 
@@ -62,8 +74,24 @@ class Rating(models.Model):
         unique_together = ('user_rating', 'project_rated')
 
 
+    def save_rating(self):
+        self.save()
+
+    def delete_rating(self):
+        self.delete()
+
+    @classmethod
+    def update_rating(cls, id, updates):
+        to_update = cls.objects.filter(id = id)
+        to_update.update(usability = updates)
+
+
+
 
 class DisplayProfile:
+
+    api_profile_list = []
+
     def __init__(self, id, user, profile_pic, bio, phone_number, projects):
         self.id = id
         self.user = user
@@ -72,7 +100,14 @@ class DisplayProfile:
         self.phone_number = phone_number
         self.projects = projects
 
+    def save_profile(self):
+        '''
+        method that appends profile to list
+        '''
+        DisplayProfile.api_profile_list.append(self)
+
 class DisplayProjects:
+    api_projects_list = []
     def __init__(self, id, profile, title, landing_page, description, live_site):
         self.id = id
         self.profile = profile
@@ -81,3 +116,8 @@ class DisplayProjects:
         self.description = description
         self.live_site = live_site
 
+    def save_project(self):
+        '''
+        method that appends project to list
+        '''
+        DisplayProjects.api_projects_list.append(self)
