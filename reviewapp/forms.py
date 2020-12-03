@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from cloudinary.models import CloudinaryField
 
 class UpdateProfile(forms.ModelForm):
+    profile_pic = forms.ImageField(required=True)
     class Meta:
         model = Profile
         exclude = ['user']
