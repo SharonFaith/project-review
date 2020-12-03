@@ -30,7 +30,7 @@
             <div class="col-md-6 text-center" >
                 <h1>Ratings</h1>
                 <br>
-                <h3>OVERALL SCORE: {{overall_rating}}</3>
+                <h3>OVERALL SCORE: {{overall_rating|truncatechars:4}}</3>
                 <br>
                 <a href="{% url 'rate-project' project.id %}"><h3>Add a rating </h3></a>
                 <br>
