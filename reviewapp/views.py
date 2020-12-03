@@ -71,6 +71,8 @@ def single_project(request, project_id):
     
     if sum_ratings != 0:
         overall_mean = sum_ratings/num_ratings
+        rounded = round(overall_mean, 2)
+        overall_mean = rounded
     else:
         overall_mean = 0
     
@@ -201,10 +203,11 @@ def update_profile(request, profile_id):
     id = profile_id
     
     print(id)
-    
+    phrase = ''
 
     if request.method == 'POST':
         form = UpdateProfile(request.POST, request.FILES)
+        formtrue = False
         if form.is_valid():
             updated_profile = form.save(commit=False)
             profile_pic = updated_profile.profile_pic.url
@@ -225,6 +228,7 @@ def update_profile(request, profile_id):
    # else:
     
     form = UpdateProfile()
+    formtrue=True
 
     return render(request, 'profile/update_the_profile.html', {'form': form, 'id':id})
 

@@ -7,12 +7,18 @@
     <div class="container">
         <h1 class="text-center">Update your profile below:</h1>
         <hr>
+        {% if formtrue %}
         <form action="{% url 'update-profile' id %}" method="post" id="subscribe">
             {% csrf_token %}
         
             {% bootstrap_form form layout='inline' %}
             <input type="submit" value="Update">
           </form>
+
+        {% else %}
+
+        <p>Your changes have been added. Click <a href="{% url 'single-project' id %}">here</a> to view the changes</p>
+        {% endif %}
     </div>
 </div>
 
