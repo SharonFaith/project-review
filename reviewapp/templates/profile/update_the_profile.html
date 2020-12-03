@@ -7,18 +7,18 @@
     <div class="container">
         <h1 class="text-center">Update your profile below:</h1>
         <hr>
-        
-        <form action="{% url 'update-profile' id %}" method="post" id="subscribe">
+        {% if formtrue %}
+        <form action="{% url 'update-profile' an_id %}" method="post" id="subscribe">
             {% csrf_token %}
         
             {% bootstrap_form form layout='inline' %}
             <input type="submit" value="Update">
           </form>
 
-        
+        {% else %}
 
-        <p>Your changes have been added. Click <a href="{% url 'profile' id %}">here</a> to view the changes</p>
-       
+        <p>An error occured when trying to upload your profile pic and bio. Click <a href="{% url 'profile' an_id %}">here</a> to go back to your profile</p>
+        {% endif %}
     </div>
 </div>
 

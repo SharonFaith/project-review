@@ -200,9 +200,9 @@ def profile(request, id):
 def update_profile(request, profile_id):
     current_user = request.user
 
-    id = profile_id
+    an_id = profile_id
     
-    print(id)
+    print(an_id)
     phrase = ''
 
     if request.method == 'POST':
@@ -218,7 +218,7 @@ def update_profile(request, profile_id):
             #phone_number = form.cleaned_data['phone_number']
     #        recipient.save()
             #new_profile = Profile(user = current_user, bio = bio, phone_number =phone_number )
-            Profile.objects.filter(id=id).update(profile_pic = profile_pic, bio =bio, phone_number=phone_number )
+           # Profile.objects.filter(id=id).update(profile_pic = profile_pic, bio =bio, phone_number=phone_number )
             print(profile_pic)
             print(bio)
             print(phone_number)
@@ -230,7 +230,7 @@ def update_profile(request, profile_id):
     form = UpdateProfile()
     formtrue=True
 
-    return render(request, 'profile/update_the_profile.html', {'form': form, 'id':id})
+    return render(request, 'profile/update_the_profile.html', {'form': form, 'an_id':an_id})
 
 
 @login_required(login_url='/accounts/login')
