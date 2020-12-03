@@ -2,7 +2,7 @@
 #### A web application
 #### By **Sharon Faith**
 ## Description
-ReviewApp is a web application that enables users to post information on their projects as well as live links to their sites to allow other users to rate those projects according to certain criteria. The given ratings for a particular project are broken down according to the user who rated, and the overall score a project has is also shown.
+ReviewApp is a web application that enables users to post information about their projects as well as live links to their sites to allow other users to rate those projects according to certain criteria. The given ratings for a particular project are broken down according to the user who rated, and the overall score a project is also shown. Users can also search for projects and view all of their own projects on their profiles.
 
 ## Running the app
 *  Access the app at the live site: https://awwardreview-app.herokuapp.com/
