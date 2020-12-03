@@ -60,7 +60,7 @@ def single_project(request, project_id):
     for rating in ratings:
         the_ratings.insert(0, rating)
 
-    current_project = Profile.objects.filter(id=project_id).first()
+    current_project = Projects.objects.filter(id=project_id).first()
     num_ratings = current_project.ratings.all().count()
 
     rating_total = []
