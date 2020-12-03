@@ -210,7 +210,7 @@ def update_profile(request, profile_id):
         formtrue = False
         if form.is_valid():
             updated_profile = form.save(commit=False)
-            profile_pic = updated_profile.profile_pic.url
+            profile_pic = updated_profile.profile_pic
             bio = updated_profile.bio
             phone_number = updated_profile.phone_number 
             #profile_pic = form.cleaned_data['profile_pic']
