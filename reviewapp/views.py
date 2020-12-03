@@ -222,7 +222,7 @@ def update_profile(request, profile_id):
             print(profile_pic)
             print(bio)
             print(phone_number)
-            update_a_profile(id, current_user, profile_pic, bio, phone_number)
+            #update_a_profile(id, current_user, profile_pic, bio, phone_number)
 
            # return redirect(profile, id = id)
    # else:
