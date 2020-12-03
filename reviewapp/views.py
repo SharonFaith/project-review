@@ -230,7 +230,7 @@ def update_profile(request, profile_id):
     form = UpdateProfile()
     formtrue=True
 
-    return render(request, 'profile/update_the_profile.html', {'form': form, 'an_id':an_id})
+    return render(request, 'profile/update_the_profile.html', {'form': form, 'an_id':an_id, 'id':current_user.id})
 
 
 @login_required(login_url='/accounts/login')
