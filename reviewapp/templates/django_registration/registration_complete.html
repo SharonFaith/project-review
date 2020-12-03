@@ -1,6 +1,21 @@
 {% extends 'base.html' %}
 {% load bootstrap3 %}
+
+{% block styles %}
+    {{super()}}
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+{% endblock %}
+
+
+
 {% block content %}
+{{block.super}}
+<div class="container-fluid" style="background-color:rgb(141, 71, 101);"> 
+    <div class="container" style=" font-family: 'Fredoka One', cursive; background-color: white; color: black;">
     <h1 class="text-center">You have successfully created and logged in to your account. Access your home page <a href="/">here</a> </h1>
     <!--<h1 class="text-center">You have registered successfully. Check your email for the link to activate your account.</h1>-->
-{% endblock %}
+    </div>
+</div>
+
+    {% endblock %}

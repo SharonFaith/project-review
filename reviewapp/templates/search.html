@@ -1,10 +1,18 @@
 {%extends 'base.html'%} 
 {% load bootstrap3 %}
-{% block content %}
 
+{% block styles %}
+    {{super()}}
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+{% endblock %}
+
+
+
+{% block content %}
 {{block.super}}
-<div class="container-fluid">
-    <div class="container">
+<div class="container-fluid" style="background-color:hsla(334, 37%, 40%, 1);"> 
+    <div class="container" style=" font-family: 'Fredoka One', cursive; background-color: white; color: black;">
         <div class="row">
             {% if searched_projects%}
               <h2>Found {{ searched_projects |length }} projects with search term {{message}} in their titles:</h2>

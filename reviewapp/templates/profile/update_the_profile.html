@@ -1,10 +1,18 @@
 {%extends 'base.html'%} 
 {% load bootstrap3 %}
-{% block content %}
 
+{% block styles %}
+    {{super()}}
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+{% endblock %}
+
+
+
+{% block content %}
 {{block.super}}
-<div class="container-fluid">
-    <div class="container">
+<div class="container-fluid" style="background-color:hsla(334, 37%, 40%, 1);"> 
+    <div class="container" style=" font-family: 'Fredoka One', cursive; background-color: white; color: black;">
         <h1 class="text-center">Update your profile below:</h1>
         <hr>
         {% if formtrue %}
@@ -17,7 +25,7 @@
 
         {% else %}
 
-        <p>An error occured when trying to upload your profile pic and bio. Click <a href="{% url 'profile' user.id %}">here</a> to go back to your profile</p>
+        <h3>An error occured when trying to upload your profile pic and bio. Click <a href="{% url 'profile' user.id %}">here</a> to go back to your profile</h3>
         {% endif %}
     </div>
 </div>

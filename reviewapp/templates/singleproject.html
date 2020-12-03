@@ -1,11 +1,20 @@
 {%extends 'base.html'%} 
 {% load bootstrap3 %}
-{% block content %}
 
+{% block styles %}
+    {{super()}}
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+{% endblock %}
+
+
+
+{% block content %}
 {{block.super}}
-<div class="container-fluid">
-    <div class="container">
-        <p class="text-center"> Project Developer: User {{project.profile}}</p>
+<div class="container-fluid" style="background-color:hsla(334, 37%, 40%, 1);"> 
+    <div class="container" style=" font-family: 'Fredoka One', cursive; background-color: white; color: black;">
+        <h1 class="text-center"> Project Developer: User {{project.profile}}</h1>
+        <br>
         <div class="row">
             <div class="col-md-6 text-center" >
                 <div class = "card" style="background-color: whitesmoke; border: whitesmoke; padding: 15px; margin: 10px;">

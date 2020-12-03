@@ -3,7 +3,6 @@
 
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,13 +11,17 @@
   {{form.media}}
 
     {% block styles %} 
-        {% bootstrap_css %}
+        {{super()}}
+        {% bootstrap_css%}
         
+    
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     {% endblock %}
-
 </head>
 
 <body class="text-center">
+<div class="container-fluid" style="background-color:hsla(334, 37%, 40%, 1);"> 
+    <div class="container" style=" font-family: 'Fredoka One', cursive; background-color: white; color: black;">
     {% include 'navbar.html' %}
     <h3>{{phrase}}</h3>
     {% if formtrue %}
@@ -31,11 +34,13 @@
     {% elif phrase != '' %}
         <p>  </p>
     {% else %}
-    <p>Your rating has been added. Click <a href="{% url 'single-project' the_id %}">here</a> to view the ratings</p>
+    <h3>Your rating has been added. Click <a href="{% url 'single-project' the_id %}">here</a> to view the ratings</h3>
     {% endif %}   
-
+    </div>
+</div>
     {% block scripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         {% bootstrap_javascript %} 
     {% endblock %}
 </body>
+</html>
