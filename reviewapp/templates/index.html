@@ -3,7 +3,7 @@
 
 
 {% block styles %}
-    {{super()}}
+    {{block.super}}
     
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 {% endblock %}
@@ -12,7 +12,7 @@
 
 {% block content %}
 {{block.super}}
-<div class="container-fluid" style="background-color:hsla(334, 37%, 40%, 1);"> 
+<div class="container-fluid" style="background-color:rgb(141, 71, 101);"> 
     <div class="container" style=" font-family: 'Fredoka One', cursive; background-color: white; color: black;">
         <div class="row">
             <div class="col-md-12 text-center" >
