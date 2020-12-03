@@ -218,7 +218,7 @@ def update_profile(request, profile_id):
             #phone_number = form.cleaned_data['phone_number']
     #        recipient.save()
             #new_profile = Profile(user = current_user, bio = bio, phone_number =phone_number )
-            
+            Profile.objects.filter(id=id).update(profile_pic = profile_pic, bio =bio, phone_number=phone_number )
             print(profile_pic)
             print(bio)
             print(phone_number)
