@@ -60,7 +60,18 @@ def single_project(request, project_id):
     for rating in ratings:
         the_ratings.insert(0, rating)
 
-    return render(request, 'singleproject.html', {'project':project, 'ratings': the_ratings})
+    current_project = Profile.objects.filter(id=project_id).first()
+    num_ratings = current_project.ratings.all().count()
+
+    rating_total = []
+    for rating in ratings:
+        rating_total.append(rating.overall)
+
+    sum_ratings = sum(rating_total)
+
+    overall_mean = sum_ratings/num_ratings
+
+    return render(request, 'singleproject.html', {'project':project, 'ratings': the_ratings, 'overall_rating':overall_mean})
 
 @login_required(login_url='/accounts/login')
 def rate_project(request, proj_id):
