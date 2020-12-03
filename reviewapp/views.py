@@ -224,7 +224,7 @@ def update_profile(request, profile_id):
            # return redirect(profile, id = id)
    # else:
     
-    form = UpdateProfileForm()
+    form = UpdateProfile()
 
     return render(request, 'profile/update_the_profile.html', {'form': form, 'id':id})
 
